@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CustomAdminController;
 use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin;
@@ -17,10 +18,7 @@ use App\Http\Controllers\Admin;
 
 
 
-Route::get('/', function () {
-    
-    return redirect('/admin/dashboard');
-});
+Route::get('/', [CustomAdminController::class, 'index'])->name('home');
 
 
 Route::middleware('api')->post('/api/request', [ApiController::class, 'handleRequest']);
